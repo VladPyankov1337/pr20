@@ -39,14 +39,14 @@ namespace ReportGeneration.Items
                         DoneCount++;
                 }
                 StudentWorks = main.AllWorks.FindAll(x =>
-                    x.IdType != 4 && x.IdType != 3);
+                    x.IdType != 4 && x.IdType != 5);
                 WorksCount += StudentWorks.Count;
                 foreach (WorkContext StudentWork in StudentWorks)
                 {
                     EvaluationContext Evaluation = main.AllEvaluations.Find(x =>
                         x.IdWork == StudentWork.Id &&
                         x.IdStudent == student.Id);
-                    if (Evaluation != null && Evaluation.Value.Trim() != "")
+                    if (Evaluation != null && Evaluation.Lateness.Trim() != "")
                         MissedCount += Convert.ToInt32(Evaluation.Lateness);
                 }
             }

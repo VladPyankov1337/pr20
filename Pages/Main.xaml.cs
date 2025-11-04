@@ -1,5 +1,6 @@
 ﻿using ReportGeneration.Classes;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -55,6 +56,15 @@ namespace ReportGeneration.Pages
                 SearchStudent = AllStudents.FindAll(x => x.IdGroup == IdGroup);
             }
             CreateStudents(SearchStudent.FindAll(x => $"{x.LastName} {x.FirstName}".Contains(TBFio.Text)));
+        }
+
+        private void ReportGeneration(object sender, RoutedEventArgs e)
+        {
+            if (CBGroups.SelectedIndex != CBGroups.Items.Count - 1)
+            {
+                int IdGroup = AllGroups.Find(x => x.Name == CBGroups.SelectedItem).Id;
+                Classes.Common.Report.Group(IdGroup, this);
+            }
         }
     }
 }

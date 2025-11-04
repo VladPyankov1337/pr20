@@ -4,7 +4,7 @@ namespace ReportGeneration.Classes.Common
 {
     public class Connection
     {
-        public static string config = "server=localhost;port=3306;uid=root;pwd=;database=journal;";
+        public static string config = "server=localhost;uid=root;pwd=;database=journal;";
 
         public static MySqlConnection OpenConnection()
         {
